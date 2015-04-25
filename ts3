@@ -46,19 +46,19 @@ echo -e " * Checking if Fedora / CentOS / Debian / Ubuntu.."
 if [[ $releaseOS == *"Fedora"* ]]; then
   echo -e "\033[32m   Fedora"
   echo -e "\033[37m"
-  osRoot = "yum"
+  osRoot="yum"
 elif [[ $releaseOS == *"CentOS"* ]]; then
   echo -e "\033[32m   CentOS"
   echo -e "\033[37m"
-  osRoot = "yum"
+  osRoot="yum"
 elif [[ $releaseOS == *"Debian"* ]]; then
   echo -e "\033[32m   Debian"
   echo -e "\033[37m"
-  osRoot = "apt"
+  osRoot="apt"
 elif [[ $releaseOS == *"Ubuntu"* ]]; then
   echo -e "\033[32m   Ubuntu"
   echo -e "\033[37m"
-  osRoot = "apt"
+  osRoot="apt"
 else
   echo -e "\033[31m   Unsupported :("
   exit

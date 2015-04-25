@@ -12,3 +12,6 @@ v0.1.3
 
 v0.1.4
  - Bugs fixed.
+
+v0.1.5
+ - Bugs fixed.
