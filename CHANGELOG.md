@@ -3,3 +3,6 @@ v0.1.0
 
 v0.1.1
  - Made some changes to the README.md file.
+
+v0.1.2
+ - Made some changes to the README.md file.

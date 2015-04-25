@@ -10,11 +10,7 @@ whether it's running Debian, Ubuntu, Fedora, or CentOS.
  - Requirements:
 
    wget installed if you don't have root privileges.
-<<<<<<< HEAD
    A 32-bit or 64-bit Linux-based server operating system.
-=======
-   A 32 bit or 64 bit linux-based server operating system.
->>>>>>> origin/master
    Debian/Ubuntu/Fedora/CentOS installed on your server.
 
 - How to run:
