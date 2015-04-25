@@ -10,11 +10,15 @@ whether it's running Debian, Ubuntu, Fedora, or CentOS.
  - Requirements:
 
    wget installed if you don't have root privileges.
+
    A 32-bit or 64-bit Linux-based server operating system.
+
    Debian/Ubuntu/Fedora/CentOS installed on your server.
 
 - How to run:
 
   wget https://raw.githubusercontent.com/bartslinuxtutorials/teamspeak3-linux-server-installer/master/ts3 --no-check-certificate
+
   chmod +x ts3
+
   ./ts3
