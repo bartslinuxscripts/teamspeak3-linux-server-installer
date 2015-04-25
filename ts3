@@ -43,19 +43,19 @@ echo -e " ║ ! ║                    Use \033[32m./ts3 \033[37mto start/stop s
 echo " ╚═══════════════════════════════════════════════════════╝"
 echo " "
 echo -e " * Checking if Fedora / CentOS / Debian / Ubuntu.."
-if [ $releaseOS == "Fedora" ]; then
+if [[ $releaseOS == *"Fedora"* ]]; then
   echo -e "\033[32m   Fedora"
   echo -e "\033[37m"
   osRoot = "yum"
-elif [ $releaseOS == "CentOS" ]; then
+elif [[ $releaseOS == *"CentOS"* ]]; then
   echo -e "\033[32m   CentOS"
   echo -e "\033[37m"
   osRoot = "yum"
-elif [ $releaseOS == "Debian" ]; then
+elif [[ $releaseOS == *"Debian"* ]]; then
   echo -e "\033[32m   Debian"
   echo -e "\033[37m"
   osRoot = "apt"
-elif [ $releaseOS == "Ubuntu" ]; then
+elif [[ $releaseOS == *"Ubuntu"* ]]; then
   echo -e "\033[32m   Ubuntu"
   echo -e "\033[37m"
   osRoot = "apt"
@@ -87,20 +87,20 @@ echo -e "\033[37m"
 echo -e " * Downloading TeamSpeak 3 Server.. "
 if [ $releaseArch == "x86_64" ]; then
   cd ~/.ts3
-  wget -q http://dl.4players.de/ts/releases/3.0.11.2/teamspeak3-server_linux-amd64-3.0.11.2.tar.gz 
+  wget -q http://dl.4players.de/ts/releases/3.0.11.2/teamspeak3-server_linux-amd64-3.0.11.2.tar.gz
 elif [ $releaseArch == "i686" ]; then
   cd ~/.ts3
-  wget -q http://dl.4players.de/ts/releases/3.0.11.2/teamspeak3-server_linux-x86-3.0.11.2.tar.gz 
+  wget -q http://dl.4players.de/ts/releases/3.0.11.2/teamspeak3-server_linux-x86-3.0.11.2.tar.gz
 fi
 echo -e "\033[32m   Done!"
 echo -e "\033[37m"
 echo -e " * Unpacking server files.. "
 if [ $releaseArch == "x86_64" ]; then
   cd ~/.ts3
-  tar -xzf teamspeak3-server_linux-amd64-3.0.11.2.tar.gz 
+  tar -xzf teamspeak3-server_linux-amd64-3.0.11.2.tar.gz
 elif [ $releaseArch == "i686" ]; then
   cd ~/.ts3
-  tar -xzf teamspeak3-server_linux-x86-3.0.11.2.tar.gz 
+  tar -xzf teamspeak3-server_linux-x86-3.0.11.2.tar.gz
 fi
 echo -e "\033[32m   Done!"
 echo -e "\033[37m"

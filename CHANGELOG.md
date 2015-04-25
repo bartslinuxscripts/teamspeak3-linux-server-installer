@@ -9,3 +9,6 @@ v0.1.2
 
 v0.1.3
  - Again, made some changes to the README.md file.
+
+v0.1.4
+ - Bugs fixed.
