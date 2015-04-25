@@ -4,10 +4,17 @@ teamspeak3-linux-server-installer is a simple and effective way to deploy
 a TeamSpeak3 server on your Linux machine. Just download the script, run
 it and you're good to go :)
 
+It automatically detects if your Linux box runs a 32/64-bit OS and
+whether it's running Debian, Ubuntu, Fedora, or CentOS.
+
  - Requirements:
 
    wget installed if you don't have root privileges.
+<<<<<<< HEAD
    A 32-bit or 64-bit Linux-based server operating system.
+=======
+   A 32 bit or 64 bit linux-based server operating system.
+>>>>>>> origin/master
    Debian/Ubuntu/Fedora/CentOS installed on your server.
 
 - How to run:
