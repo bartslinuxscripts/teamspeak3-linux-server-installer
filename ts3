@@ -1,0 +1,112 @@
+#!/bin/bash
+clear
+releaseOS=$(gawk -F= '/^NAME/{print $2}' /etc/os-release)
+releaseArch=$(uname -m)
+if [ -d ~/.ts3 ]; then
+  if [ $releaseArch == "x86_64" ]; then
+    if [ -f ~/.ts3/teamspeak3-server_linux-amd64/ts3server.pid ]; then
+      while true; do
+        read -p "   TeamSpeak3 Server is already running. Do you want to stop it? [y/n]" yn
+        case $yn in
+          [Yy]* ) ~/.ts3/teamspeak3-server_linux-amd64/ts3server_startscript.sh stop >/dev/null 2>/dev/null; echo -e "\033[32m   Server has been stopped.\033[37m"; break;;
+          [Nn]* ) exit;;
+          * ) echo "Please answer yes or no."
+        esac
+      done
+    else
+      echo -e "\033[32m   Server has been started.\033[37m"
+      ~/.ts3/teamspeak3-server_linux-amd64/ts3server_startscript.sh start >/dev/null 2>/dev/null
+    fi
+  elif [ $releaseArch == "i686" ]; then
+    if [ -f ~/.ts3/teamspeak3-server_linux-x86/ts3server.pid ]; then
+      while true; do
+        read -p "   TeamSpeak3 Server is already running. Do you want to stop it? [y/n]" yn
+        case $yn in
+          [Yy]* ) ~/.ts3/teamspeak3-server_linux-x86/ts3server_startscript.sh stop >/dev/null 2>/dev/null; echo -e "\033[32m   Server has been stopped.\033[37m"; break;;
+          [Nn]* ) exit;;
+          * ) echo "Please answer yes or no."
+        esac
+      done
+    else
+      echo -e "\033[32m   Server has been started.\033[37m"
+      ~/.ts3/teamspeak3-server_linux-x86/ts3server_startscript.sh start >/dev/null 2>/dev/null
+    fi
+  fi
+  exit
+fi
+echo -e "\033[37m"
+echo " ╔═══════════════════════════════════════════════════════╗"
+echo " ║ Bart's Linux Tutorials ║ TeamSpeak 3 Server Installer ║"
+echo " ╚═══════════════════════════════════════════════════════╝"
+echo " ╔═══════════════════════════════════════════════════════╗"
+echo -e " ║ ! ║                    Use \033[32m./ts3 \033[37mto start/stop server ║"
+echo " ╚═══════════════════════════════════════════════════════╝"
+echo " "
+echo -e " * Checking if Fedora / CentOS / Debian / Ubuntu.."
+if [ $releaseOS == "Fedora" ]; then
+  echo -e "\033[32m   Fedora"
+  echo -e "\033[37m"
+  osRoot = "yum"
+elif [ $releaseOS == "CentOS" ]; then
+  echo -e "\033[32m   CentOS"
+  echo -e "\033[37m"
+  osRoot = "yum"
+elif [ $releaseOS == "Debian" ]; then
+  echo -e "\033[32m   Debian"
+  echo -e "\033[37m"
+  osRoot = "apt"
+elif [ $releaseOS == "Ubuntu" ]; then
+  echo -e "\033[32m   Ubuntu"
+  echo -e "\033[37m"
+  osRoot = "apt"
+else
+  echo -e "\033[31m   Unsupported :("
+  exit
+fi
+
+echo -e " * Checking if wget is installed.. "
+if [ $osRoot == "yum" ]; then
+  yum -y install wget > /dev/null
+elif [ $osRoot == "apt" ]; then
+  apt-get -y install wget > /dev/null
+fi
+echo -e "\033[32m   Done!"
+echo -e "\033[37m"
+echo -e " * Checking if 32bit or 64bit.. "
+if [ $releaseArch == "x86_64" ]; then
+  echo -e "\033[32m   64bit"
+  echo -e "\033[37m"
+elif [ $releaseArch == "i686" ]; then
+  echo -e "\033[32m   32bit"
+  echo -e "\033[37m"
+fi
+echo -e " * Creating install directory.. "
+mkdir ~/.ts3
+echo -e "\033[32m   Done!"
+echo -e "\033[37m"
+echo -e " * Downloading TeamSpeak 3 Server.. "
+if [ $releaseArch == "x86_64" ]; then
+  cd ~/.ts3
+  wget -q http://dl.4players.de/ts/releases/3.0.11.2/teamspeak3-server_linux-amd64-3.0.11.2.tar.gz 
+elif [ $releaseArch == "i686" ]; then
+  cd ~/.ts3
+  wget -q http://dl.4players.de/ts/releases/3.0.11.2/teamspeak3-server_linux-x86-3.0.11.2.tar.gz 
+fi
+echo -e "\033[32m   Done!"
+echo -e "\033[37m"
+echo -e " * Unpacking server files.. "
+if [ $releaseArch == "x86_64" ]; then
+  cd ~/.ts3
+  tar -xzf teamspeak3-server_linux-amd64-3.0.11.2.tar.gz 
+elif [ $releaseArch == "i686" ]; then
+  cd ~/.ts3
+  tar -xzf teamspeak3-server_linux-x86-3.0.11.2.tar.gz 
+fi
+echo -e "\033[32m   Done!"
+echo -e "\033[37m"
+echo -e " * Starting server for the first time.. "
+if [ $releaseArch == "x86_64" ]; then
+  ~/.ts3/teamspeak3-server_linux-amd64/ts3server_startscript.sh start
+elif [ $releaseArch == "i686" ]; then
+  ~/.ts3/teamspeak3-server_linux-x86/ts3server_startscript.sh start
+fi
